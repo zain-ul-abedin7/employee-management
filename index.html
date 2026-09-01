@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Employee Management System</h1>
+
+    <div class="card">
+        <h2>Add Employee</h2>
+
+        <form id="employeeForm">
+
+            <input id="name" placeholder="Employee Name">
+            <input id="email" type="email" placeholder="Email">
+            <input id="department" placeholder="Department">
+            <input id="number" placeholder="Mobile Number">
+
+            <button>Add Employee</button>
+
+        </form>
+        
+        <p id="error"></p>
+    </div>
+    
+    <div class="card">
+
+        <div class="top">
+            <h2>Employees</h2>
+            <input id="search" placeholder="Search by name...">
+        </div>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Mobile</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="employeeTable"></tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
