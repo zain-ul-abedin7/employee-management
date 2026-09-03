@@ -91,3 +91,10 @@ th {
 .delete:hover {
     background: #803838;
 }
+.edit {
+    background: #3498db;
+}
+
+.edit:hover {
+    background: #2980b9;
+}
