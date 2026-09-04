@@ -1,61 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Management</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
 <div class="container">
-
     <h1>Employee Management System</h1>
 
     <div class="card">
-        <h2>Add Employee</h2>
-
+        <h2 id="formTitle">Add Employee</h2>
         <form id="employeeForm">
-
-            <input id="name" placeholder="Employee Name">
-            <input id="email" type="email" placeholder="Email">
-            <input id="department" placeholder="Department">
-            <input id="number" placeholder="Mobile Number">
-
-            <button id="submitBtn">Add Employee</button>
-
+            <div class="field">
+                <input name="name" id="name" placeholder="Name" required pattern="^[A-Za-z ]{2,50}$">
+                <p class="field-error" id="nameError"></p>
+            </div>
+            <div class="field">
+                <input name="email" id="email" type="email" placeholder="Email" required>
+                <p class="field-error" id="emailError"></p>
+            </div>
+            <div class="field">
+                <input name="department" id="department" placeholder="Department" required pattern="^[A-Za-z\- ]{2,50}$">
+                <p class="field-error" id="departmentError"></p>
+            </div>
+            <div class="field">
+                <input name="number" id="number" placeholder="Mobile (03XXXXXXXXX)" required pattern="^03\d{9}$">
+                <p class="field-error" id="numberError"></p>
+            </div>
+            <button id="submitBtn" type="submit">Add Employee</button>
+            <button id="cancelBtn" type="reset" class="secondary hidden">Cancel</button>
         </form>
-        
-        <p id="error"></p>
     </div>
-    
-    <div class="card">
 
+    <div class="card">
+        <div class="stats">
+            <div class="stat"><span class="stat-value" id="totalEmployees">0</span><span class="stat-label">Total Employees</span></div>
+            <div class="stat"><span class="stat-value" id="totalDepartments">0</span><span class="stat-label">Total Departments</span></div>
+        </div>
         <div class="top">
             <h2>Employees</h2>
-            <input id="search" placeholder="Search by name...">
+            <input id="search" placeholder="Search by name, email, department, number...">
         </div>
-
-        <table>
-
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Department</th>
-                    <th>Mobile</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-
-            <tbody id="employeeTable"></tbody>
-
-        </table>
-
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr><th>Name</th><th>Email</th><th>Department</th><th>Mobile</th><th>Action</th></tr>
+                </thead>
+                <tbody id="employeeTable"></tbody>
+            </table>
+        </div>
     </div>
-
 </div>
 
-<script src="script.js"></script>
+<template id="employeeRowTemplate">
+    <tr>
+        <td data-label="Name">{name}</td>
+        <td data-label="Email">{email}</td>
+        <td data-label="Department">{department}</td>
+        <td data-label="Mobile">{number}</td>
+        <td data-label="Action">
+            <button class="edit" type="button">Edit</button>
+            <button class="delete" type="button">Delete</button>
+        </td>
+    </tr>
+</template>
 
+<script src="script.js"></script>
 </body>
 </html>
